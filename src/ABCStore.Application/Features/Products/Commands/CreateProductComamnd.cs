@@ -27,6 +27,7 @@ namespace ABCStore.Application.Features.Products.Commands
             {
                 return new ResponseWrapper<int>().Failed("ivalid request");
             }
+            // test
             var productMapped = _mapper.Map<Product>(request.CreateProduct);
             var result = await _productSetvice.CreateAsync(productMapped);
             return new ResponseWrapper<int>().Success(result.Id, "Product createed successfully");
