@@ -1,5 +1,7 @@
 ﻿using ABCStore.Common.Requests.Categories;
+using ABCStore.Common.Requests.Products;
 using ABCStore.Common.Responses.Categories;
+using ABCStore.Common.Responses.Products;
 using ABCStore.Domain.Entities;
 using AutoMapper;
 
@@ -11,6 +13,9 @@ namespace ABCStore.Application
         {
             CreateMap<CreateCategoryRequest, Category>();
             CreateMap<Category, CategoryResponse>().ReverseMap();
+            CreateMap<CreateProductRequest, Product>().ReverseMap();
+            CreateMap<Product, ProductResponse>().ReverseMap();
+
 
         }
     }

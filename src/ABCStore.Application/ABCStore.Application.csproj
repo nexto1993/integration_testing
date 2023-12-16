@@ -16,8 +16,4 @@
     <ProjectReference Include="..\ABCStore.Domain\ABCStore.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Products\Queries\" />
-  </ItemGroup>
-
 </Project>

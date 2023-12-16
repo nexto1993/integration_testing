@@ -23,8 +23,8 @@ namespace ABCStore.Application.Features.Categories.Commands
             var categoryIndb = await _categoryService.GetAsync(request.CategoryId);
             if (categoryIndb.Id > 0) 
             {
-                await _categoryService.DeleteAsync(categoryIndb);
-                return new ResponseWrapper<int>().Success(categoryIndb.Id,
+                var deletedCategory = await _categoryService.DeleteAsync(categoryIndb);
+                return new ResponseWrapper<int>().Success(deletedCategory,
                     $"Category {categoryIndb.Name} deleted successfully");
             }
 
