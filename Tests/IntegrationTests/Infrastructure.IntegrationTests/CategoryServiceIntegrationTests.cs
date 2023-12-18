@@ -31,7 +31,6 @@ namespace Infrastructure.IntegrationTests
         public async Task GetCategoryById_With_Valid_CategoryId_Return_Category(int categoryId)
         {
             // Arrange
-            // int categoryId = 1;
 
 
             // Act
