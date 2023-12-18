@@ -25,11 +25,13 @@ namespace Infrastructure.IntegrationTests
             _context.SaveChanges();
         }
 
-        [Fact]
-        public async Task GetCategoryById_With_Valid_CategoryId_Return_Category()
+        [Theory(DisplayName ="TC1: Get Category By Valid Id")]
+        [InlineData(1)]
+        [InlineData(2)]
+        public async Task GetCategoryById_With_Valid_CategoryId_Return_Category(int categoryId)
         {
             // Arrange
-            int categoryId = 1;
+            // int categoryId = 1;
 
 
             // Act
@@ -38,6 +40,21 @@ namespace Infrastructure.IntegrationTests
             // Assert
             Assert.NotNull(categoryInDb);
             Assert.Equal(categoryId, categoryInDb.Id);
+        }
+
+        [Theory(DisplayName = "TC2: Get Category By Invalid Id")]
+        [InlineData(10)]
+        [InlineData(23)]
+        public async Task GetCategoryById_With_Valid_CategoryId_Return_Null(int categoryId)
+        {
+            // Arrange
+
+
+            // Act
+            var categoryInDb = await _categoryService.GetAsync(categoryId);
+
+            // Assert
+            Assert.Null(categoryInDb);
         }
         public void Dispose()
         {

@@ -4,6 +4,11 @@
       "id": 1,
       "name": "Cat 1",
       "description": "Desc 1"
+    },
+    {
+      "id": 2,
+      "name": "Cat 2",
+      "description": "Desc 2"
     }
   ],
   "products": [
@@ -25,7 +30,7 @@
       "id": 3,
       "name": "products 1",
       "description": "Desc 1",
-      "categoryId": 1,
+      "categoryId": 2,
       "price": 7777
     }
   ]
