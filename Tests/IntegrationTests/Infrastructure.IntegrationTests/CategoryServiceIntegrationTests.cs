@@ -114,6 +114,17 @@ namespace Infrastructure.IntegrationTests
             Assert.Equal(categoryId,deletedCategory);
 
         }
+
+        [Theory(DisplayName = "TC10: Delete Category By InValid Id")]
+        [InlineData(100)]
+        [InlineData(200)]
+        public async Task DeleteCataegory_With_InValid_CategoryId_Should_Return_Zero(int categoryId)
+        {
+            var existingCategory = await _categoryService.GetAsync(categoryId);
+            var deletedCategory = await _categoryService.DeleteAsync(existingCategory);
+            Assert.Equal(0, deletedCategory);
+
+        }
         public void Dispose()
         {
             _context.Dispose();
