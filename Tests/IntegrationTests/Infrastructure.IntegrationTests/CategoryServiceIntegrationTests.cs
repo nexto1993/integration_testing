@@ -95,6 +95,25 @@ namespace Infrastructure.IntegrationTests
             Assert.Equal(category.Id, updatedCategory);
         }
 
+        [Theory(DisplayName = ("TC8 : Update Categgory With Existing Category with invalid"))]
+        [MemberData(nameof(CategoryParamData.GetValidCategoryInvalidForUpdating), MemberType = typeof(CategoryParamData))]
+        public async Task UpdateCataegory_With_InValid_Category_Should_Return_Zero(Category category)
+        {
+            var categoryInDb = await _categoryService.GetAsync(category.Id);
+            var updatedCategory = await _categoryService.UpdateAsync(categoryInDb);
+            Assert.Equal(0, updatedCategory);
+        }
+
+        [Theory(DisplayName = "TC9: Delete Category By Valid Id")]
+        [InlineData(1)]
+        [InlineData(2)]
+        public async Task DeleteCataegory_With_Valid_CategoryId_Should_Return_CatId(int categoryId)
+        {
+            var existingCategory = await _categoryService.GetAsync(categoryId);
+            var deletedCategory = await _categoryService.DeleteAsync(existingCategory);
+            Assert.Equal(categoryId,deletedCategory);
+
+        }
         public void Dispose()
         {
             _context.Dispose();

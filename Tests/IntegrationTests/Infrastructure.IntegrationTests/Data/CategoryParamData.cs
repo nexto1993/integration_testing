@@ -27,5 +27,14 @@ namespace Infrastructure.IntegrationTests.Data
                 new Category(){Id=2, Name="cat2" , Description="desc updated"}
             };
         }
+
+
+        public static IEnumerable<object[]> GetValidCategoryInvalidForUpdating()
+        {
+            yield return new object[]
+            {
+                new Category(){Id=100, Name="cat1" , Description="desc updated"}
+            };
+        }
     }
 }
