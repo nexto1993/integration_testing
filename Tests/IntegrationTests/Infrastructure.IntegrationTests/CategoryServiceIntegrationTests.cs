@@ -83,6 +83,18 @@ namespace Infrastructure.IntegrationTests
             Assert.Equal(new Category().Id, 0);
 
         }
+
+        [Theory(DisplayName = ("TC7 : Update Categgory With Existing Category"))]
+        [MemberData(nameof(CategoryParamData.GetValidCategoryForUpdating), MemberType = typeof(CategoryParamData))]
+        public async Task UpdateCataegory_With_Valid_Category_Should_Return_Category(Category category)
+        {
+            var categoryInDb = await _categoryService.GetAsync(category.Id); 
+            categoryInDb.Description = category.Description;
+            categoryInDb.Name = category.Name;
+            var updatedCategory = await _categoryService.UpdateAsync(categoryInDb);
+            Assert.Equal(category.Id, updatedCategory);
+        }
+
         public void Dispose()
         {
             _context.Dispose();
